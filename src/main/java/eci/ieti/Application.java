@@ -27,7 +27,6 @@ public class Application implements CommandLineRunner {
 
     }
 
-
     @Override
     public void run(String... args) throws Exception {
         GridFSFile file = gridFsTemplate.findOne(new Query().addCriteria(Criteria.where("filename").is("testing.png")));
