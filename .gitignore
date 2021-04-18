@@ -3,6 +3,16 @@
 .gradle
 /build/
 
+front/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+front/build
+
 # Ignore Gradle GUI config
 gradle-app.setting
 

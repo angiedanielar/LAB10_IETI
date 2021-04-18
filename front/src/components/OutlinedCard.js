@@ -6,7 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import {Fab } from '@material-ui/core';
+import CardMedia from '@material-ui/core/CardMedia';
+import { Fab } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -23,38 +24,45 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+},
 });
 
-let showFile
-
-if (fileUrl.endsWith(".pdf")) {
-  showFile = <div style={{
-    margin: "auto",
-    width: "50%",
-    padding: "10px"
-  }}>
-    <a href={fileUrl}>
-      <Fab
-        color="primary"
-        size="small"
-        component="span"
-        aria-label="add"
-        variant="extended"
-      >
-        <PictureAsPdfIcon /> View File
-                </Fab>
-    </a>
-  </div>
-}
-else {
-  showFile = <CardMedia
-    image={fileUrl}
-    title={description} />
-}
 
 export default function OutlinedCard({ description, responsible, status, dueDate, fileUrl }) {
   const classes = useStyles();
+
   const bull = <span className={classes.bullet}>•</span>;
+  let showFile
+  console.log(fileUrl)
+
+  if (fileUrl.endsWith(".pdf")) {
+    showFile = <div style={{
+      margin: "auto",
+      width: "50%",
+      padding: "10px"
+    }}>
+      <a href={fileUrl}>
+        <Fab
+          color="primary"
+          size="small"
+          component="span"
+          aria-label="add"
+          variant="extended"
+        >
+          <PictureAsPdfIcon /> View File
+                </Fab>
+      </a>
+    </div>
+  }
+  else {
+      showFile = <CardMedia
+      className={classes.media}
+      image={fileUrl}
+      title={description} />
+  }
 
   return (
     <Card className={classes.root} variant="outlined">

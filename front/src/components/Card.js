@@ -16,6 +16,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -31,6 +32,7 @@ export const Card = ({ handleNewTask }) => {
     const classes = useStyles();
 
     const [openState, setOpenState] = useState(false);
+
 
     const handleOpenDialog = () => {
         setOpenState(true);
@@ -69,8 +71,8 @@ export const Card = ({ handleNewTask }) => {
                     "fileUrl": response.data
 
                 };
-                setitems(newItems);
                 handleNewTask(newItem)
+                console.log(newItem)
                 setOpenState(false);
             }).catch(error => {
                 alert("An error occurred while trying to connect to the database.");
